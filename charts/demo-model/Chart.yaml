@@ -1,0 +1,6 @@
+apiVersion: v2
+name: demo-model
+description: Tiny workload for learning Argo CD
+type: application
+version: 0.1.0
+appVersion: "1.0"

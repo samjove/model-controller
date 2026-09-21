@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-model
+spec:
+  replicas: {{ .Values.replicas }}
+
+  selector:
+    matchLabels:
+      app: demo-model
+
+  template:
+    metadata:
+      labels:
+        app: demo-model
+
+    spec:
+      containers:
+        - name: model-server
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
