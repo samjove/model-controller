@@ -160,6 +160,13 @@ func (r *ModelDeploymentReconciler) Reconcile(ctx context.Context, req ctrl.Requ
 		}
 	}
 
+	if model.Status.ReadyReplicas != deployment.Status.ReadyReplicas {
+		model.Status.ReadyReplicas = deployment.Status.ReadyReplicas
+
+		if err := r.Status().Update(ctx, &model); err != nil {
+			return ctrl.Result{}, err
+		}
+	}
 	return ctrl.Result{}, nil
 }
 

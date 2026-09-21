@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-controller
+spec:
+  replicas: {{ .Values.controller.replicas }}
+
+  selector:
+    matchLabels:
+      app: model-controller
+
+  template:
+    metadata:
+      labels:
+        app: model-controller
+
+    spec:
+      containers:
+        - name: manager
+
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

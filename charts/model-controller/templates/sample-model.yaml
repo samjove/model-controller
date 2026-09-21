@@ -1,0 +1,8 @@
+apiVersion: ml.example.com/v1alpha1
+kind: ModelDeployment
+metadata:
+  name: {{ .Values.model.name }}
+spec:
+  model: {{ .Values.model.version }}
+  image: {{ .Values.model.image }}
+  replicas: {{ .Values.model.replicas }}

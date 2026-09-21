@@ -1,0 +1,21 @@
+controller:
+  replicas: 1
+
+image:
+  repository: model-controller
+  tag: latest
+  pullPolicy: IfNotPresent
+
+model:
+  name: fraud-model
+  version: fraud-v18
+  image: nginx:1.27
+  replicas: 3
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 128Mi
