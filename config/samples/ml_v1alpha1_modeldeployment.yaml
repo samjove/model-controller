@@ -1,0 +1,11 @@
+apiVersion: ml.model-controller.com/v1alpha1
+kind: ModelDeployment
+metadata:
+  labels:
+    app.kubernetes.io/name: model-controller
+    app.kubernetes.io/managed-by: kustomize
+  name: fraud-model
+spec:
+  model: fraud-v18
+  image: nginx:1.27
+  replicas: 3

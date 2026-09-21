@@ -8,4 +8,14 @@ layout:
 - go.kubebuilder.io/v4
 projectName: model-controller
 repo: github.com/samjove/model-controller
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: model-controller.com
+  group: ml
+  kind: ModelDeployment
+  path: github.com/samjove/model-controller/api/v1alpha1
+  version: v1alpha1
 version: "3"
