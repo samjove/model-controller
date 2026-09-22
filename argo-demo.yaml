@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: demo-model
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/samjove/model-controller.git
+    targetRevision: main
+    path: charts/demo-model
+
+    helm:
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
